@@ -11,7 +11,7 @@ public class ChracterController : MonoBehaviour
     public float dash = 5f;
     public float rotSpeed = 3f;
     private Vector3 dir = Vector3.zero;
-
+    public GameObject Cam;
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +26,16 @@ public class ChracterController : MonoBehaviour
 
     private void FixedUpdate() 
     {
+
+        Vector3 offset = Cam.transform.forward;
+        offset.y = 0;
+
         // 1. Input Value
         dir.x = joy.Horizontal;
         dir.z = joy.Vertical;
+        transform.LookAt(rigidbody.transform.position + offset);
+        dir = rigidbody.transform.TransformDirection(dir);
+
         dir = dir * speed * Time.deltaTime;
         rigidbody.MovePosition(rigidbody.position + dir);
 
