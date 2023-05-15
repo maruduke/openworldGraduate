@@ -8,8 +8,9 @@ public class CameraController : MonoBehaviour
 
     public Transform objectTofollow;
     public float followSpeed = 10f;
-    public float sensitivity = 0.000000000000001f;
+    public float sensitivity = 0.000000000000000000000001f;
     public float clampAngle = 70f;
+
 
     private float rotX;
     private float rotY;

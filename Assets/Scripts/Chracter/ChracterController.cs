@@ -33,11 +33,15 @@ public class ChracterController : MonoBehaviour
         // 1. Input Value
         dir.x = joy.Horizontal;
         dir.z = joy.Vertical;
-        transform.LookAt(rigidbody.transform.position + offset);
-        dir = rigidbody.transform.TransformDirection(dir);
 
-        dir = dir * speed * Time.deltaTime;
-        rigidbody.MovePosition(rigidbody.position + dir);
+        if(dir != Vector3.zero) {
+            transform.LookAt(rigidbody.transform.position + offset);
+            dir = rigidbody.transform.TransformDirection(dir);
+            dir = dir * speed * Time.deltaTime;
+            rigidbody.MovePosition(rigidbody.position + dir);
+        }
+
+
 
         
     }
