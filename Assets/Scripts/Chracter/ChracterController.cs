@@ -5,43 +5,61 @@ using UnityEngine;
 public class ChracterController : MonoBehaviour
 {
     public FixedJoystick joy;
-    public Rigidbody rigidbody;
-    public float speed = 10f;
+    public Rigidbody rigidBody;
+    public float speed = 2f;
     public float jumpHeight = 3f;
     public float dash = 5f;
-    public float rotSpeed = 3f;
+    public float rotSpeed = 10f;
     private Vector3 dir = Vector3.zero;
     public GameObject Cam;
+    public Animator anim;
+    
 
-    // Start is called before the first frame update
+    public GameObject direction;
+
     void Start()
     {
-        rigidbody = this.GetComponent<Rigidbody>();
+        rigidBody = this.GetComponent<Rigidbody>();
+        anim.SetBool("Run", false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-    }
-
-    private void FixedUpdate() 
-    {
 
         Vector3 offset = Cam.transform.forward;
         offset.y = 0;
+        offset.Normalize();
 
         // 1. Input Value
         dir.x = joy.Horizontal;
         dir.z = joy.Vertical;
 
+
         if(dir != Vector3.zero) {
-            transform.LookAt(rigidbody.transform.position + offset);
-            dir = rigidbody.transform.TransformDirection(dir);
-            dir = dir * speed * Time.deltaTime;
-            rigidbody.MovePosition(rigidbody.position + dir);
+
+            anim.SetBool("Run", true);
+            Vector3 cameraRelativeInput = Quaternion.LookRotation(offset) * dir;
+
+            if (cameraRelativeInput != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(cameraRelativeInput);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotSpeed * Time.deltaTime);
+            }
+
+            Vector3 movement = cameraRelativeInput * speed * Time.deltaTime;
+            transform.Translate(movement, Space.World);
         }
 
+        else {
+            anim.SetBool("Run", false);
+        }
 
+    }
+
+    private void FixedUpdate() 
+    {
 
         
     }

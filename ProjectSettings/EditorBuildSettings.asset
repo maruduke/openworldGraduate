@@ -5,27 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+  - enabled: 0
+    path: Assets/Terrain/Scenes/MainScene.unity
     guid: 636dc596ddd1829409843b2854b1900a
-  - enabled: 1
-    path: Assets/Scenes/Terrain-10_0.unity
-    guid: 3c89918dc49466d46ba0a53b99c4275b
-  - enabled: 1
-    path: Assets/Scenes/Terrain-10_10.unity
-    guid: 8400dfc558a09a84b8c1db9fdef6dfba
-  - enabled: 1
-    path: Assets/Scenes/Terrain0_0.unity
-    guid: 7fc61e68a2f174645a664a350854a4af
-  - enabled: 1
-    path: Assets/Scenes/Terrain0_10.unity
-    guid: d30922e0873d6ab4886fc71199e9820e
-  - enabled: 1
-    path: Assets/Scenes/Terrain10_0.unity
-    guid: 83540ff9719a0ae48bed53d2a2a151b2
-  - enabled: 1
-    path: Assets/Scenes/Terrain10_10.unity
-    guid: 709b56647d7d4e449afde20ea248830c
+  - enabled: 0
+    path: Assets/Scenes/Map.unity
+    guid: 4e8cab9f222cb3043a67774ae9083224
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 4c79eb7e80098334893d2401276c0e9f, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: 1268d32e865ddeb4ba8b4b8b3709b3e3,
+      type: 2}

@@ -21,7 +21,10 @@ public class LightingController : MonoBehaviour
     [SerializeField, Range(0,24)]
     private float TimeOfDay;
     // Start is called before the first frame update
-
+    void Start()
+    {
+        TimeOfDay = 8.0f;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -30,7 +33,7 @@ public class LightingController : MonoBehaviour
 
         if(Application.isPlaying)
         {
-            TimeOfDay += Time.deltaTime;
+            TimeOfDay += Time.deltaTime * 0.1f;
             TimeOfDay %= 24;
             UpdateLighting(TimeOfDay / 24f);
         }
@@ -51,23 +54,25 @@ public class LightingController : MonoBehaviour
             directionalLight.transform.localRotation = Quaternion.Euler(new Vector3(timePercent*360f - 90f, 170f, 0));
         }
 
-        if(timePercent > 6.0f /24f && timePercent <= 16.0f / 24f)
-        {
-            RenderSettings.skybox = dayMat;
-        }
-        else if(timePercent <= 6.0f /24f && timePercent > 5.0f /24f)
-        {
-            RenderSettings.skybox = sunRiseMat;
-        }
-        else if(timePercent > 16.0f / 24f && timePercent <= 17.0f / 24f)
-        {
-            RenderSettings.skybox = sunSetMat;
-        }
-        else {
-            RenderSettings.skybox = nightMat;
-        }
+        
 
-        RenderSettings.skybox.SetFloat("_Rotation", timePercent * 360f);
+        // if(timePercent > 6.0f / 24f && timePercent <= 16.0f / 24f)
+        // {
+        //     RenderSettings.skybox = dayMat;
+        // }
+        // else if(timePercent <= 6.0f /24f && timePercent > 5.0f /24f)
+        // {
+        //     RenderSettings.skybox = sunRiseMat;
+        // }
+        // else if(timePercent > 16.0f / 24f && timePercent <= 17.0f / 24f)
+        // {
+        //     RenderSettings.skybox = sunSetMat;
+        // }
+        // else {
+        //     RenderSettings.skybox = nightMat;
+        // }
+
+        // RenderSettings.skybox.SetFloat("_Rotation", timePercent * 360f);
     }
 
     private void Onvalidate()

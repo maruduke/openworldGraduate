@@ -35,8 +35,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - DeactivateHLOD
+  - HLOD
   m_SortingLayers:
   - name: Default
     uniqueID: 0
