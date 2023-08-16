@@ -16,15 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: d0fc4d04d67fe23469aa375dd9855606
-  m_SerializeEntries:
-  - m_GUID: 891d99376d75e3f49875407b4da070bc
-    m_Address: Assets/External Asset Package/TestTreeHLOD_group-1.hlod
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c6b7fb383a3534b039692b5485b6e739
-    m_Address: Assets/External Asset Package/Darth_Artisan/Free_Trees/Prefabs/Palm_Tree.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: be77626378f9326409f1ed5febdfc893, type: 2}
   m_SchemaSet:

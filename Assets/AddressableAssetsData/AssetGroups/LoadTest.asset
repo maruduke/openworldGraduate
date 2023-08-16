@@ -17,8 +17,13 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 34150022702fba14fad8030021922574
   m_SerializeEntries:
-  - m_GUID: d64408e98f6affc4e9b153e09a157d68
-    m_Address: Assets/Terrain/Terrain (1).prefab
+  - m_GUID: 25a8bcbcbc5735c47bcaa41db9b28375
+    m_Address: Assets/Terrain/Terrain.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TestLoad
+  - m_GUID: 5299cbbf3567f614d955159177edc204
+    m_Address: Assets/TestingAsset/GameObject.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - TestLoad

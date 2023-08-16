@@ -45,13 +45,13 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.hlod": {
-      "version": "file:C:/HLODSystem/com.unity.hlod",
+      "version": "file:../Assets/External Asset Package/HLODSystem/com.unity.hlod",
       "depth": 0,
       "source": "local",
       "dependencies": {}
     },
     "com.unity.hlod.addressable": {
-      "version": "file:C:/HLODSystem/com.unity.hlod.addressable",
+      "version": "file:../Assets/External Asset Package/HLODSystem/com.unity.hlod.addressable",
       "depth": 0,
       "source": "local",
       "dependencies": {

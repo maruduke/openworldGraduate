@@ -46,6 +46,8 @@ namespace MySystem.SceneControl{
 
         private State state;
 
+        private Vector3 pos;
+
         /*
         prepare: 초기 단계
         Loading: 데이터 로드, 언로드 진행중
@@ -64,15 +66,20 @@ namespace MySystem.SceneControl{
 #endregion
 
         void Start()
-        {   
+                {   
+            // 값 초기화
             state = State.prepare;
             sceneName = this.gameObject.scene.name;
-            terrainRange = 4000;
-            
-            StartCoroutine(GetLocation());
+            terrainRange = 500;
 
+            var postmp = this.gameObject.transform.position;            
+            pos = new Vector3(postmp.x + terrainRange, 0f , postmp.z + terrainRange);
+
+            //hlod object loading distance
+            terrainRange = 2 * (terrainRange * terrainRange); 
+
+            StartCoroutine(GetLocation());
             StartCoroutine(TerrainInstantiateV2());
-            
             Register();
 
         }
@@ -83,23 +90,23 @@ namespace MySystem.SceneControl{
 
         public void update(int x, int z) {
             
-            var pos = this.gameObject.transform.position;
 
             int xcheck = x - (int) pos.x;
             int zcheck = z - (int) pos.z;
-
             int vec = (xcheck*xcheck)  + (zcheck*zcheck);
 
+            // Debug.Log("vec:" + vec + "range: " + terrainRange);
             if(vec < terrainRange && state == State.Unloadhlod) {
-                Debug.Log("HLOD: " + vec + "< terrainRange" + terrainRange);
+                //hlod object create
                 StartCoroutine(HLODInstantiateV2());
+
             }
 
             else if (vec >= terrainRange  && state == State.Loadhlod) {
-                //hlodrelease
-                Debug.Log("Release: " + vec + ">= terrainRange" + terrainRange);
+                //hlod object release
                 StartCoroutine(HLODReleaseV2());
             }
+            
             
         }
 
@@ -136,6 +143,7 @@ namespace MySystem.SceneControl{
                         }
                         else
                             Debug.Log("LoadResourceLocationAsync error");
+
                             
                     };
             }
@@ -162,7 +170,10 @@ namespace MySystem.SceneControl{
             int i = 0;
             foreach( IResourceLocation loc in _locations )
             {
+                
+
                 if(loc.PrimaryKey.Contains("Terrain")) {
+
                     Addressables.InstantiateAsync(loc).Completed +=
                         (handle) =>
                         {
@@ -180,7 +191,6 @@ namespace MySystem.SceneControl{
             }
 
             yield return new WaitWhile( () => i != _locations.Count);
-            Debug.Log("terrain instant v2" + state);
             state = State.Unloadhlod;
             yield break;
         }
@@ -203,7 +213,7 @@ namespace MySystem.SceneControl{
                         {
                             handle.Result.transform.localPosition = handle.Result.transform.position;
                             handle.Result.transform.parent = this.transform.GetChild(1);
-                            _terrainObjects.Add(handle.Result);
+                            _hlodObjects.Add(handle.Result);
                             i++;
                         };
                 }
@@ -214,9 +224,7 @@ namespace MySystem.SceneControl{
 
             }
 
-
-            yield return new WaitWhile( () => i != _hlodObjects.Count);
-            Debug.Log("hlod instantiate" + state);
+            yield return new WaitWhile( () => i != _locations.Count);
             state = State.Loadhlod;
             yield break;
         }

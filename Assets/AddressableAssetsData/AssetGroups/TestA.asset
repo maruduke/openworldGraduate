@@ -16,11 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: f80d110bab4b1134792a94fb3d8327ad
-  m_SerializeEntries:
-  - m_GUID: 130c719eb08021846ae228ec69d5e139
-    m_Address: Assets/TestingAsset/Test_group-1.hlod
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: be77626378f9326409f1ed5febdfc893, type: 2}
   m_SchemaSet:

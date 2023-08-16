@@ -21,7 +21,7 @@ public class sceneManager : MonoBehaviour
 
     Vector3 pos;    
     // 터레인 크기
-    int terrainRange = 100;
+    int terrainRange = 1000;
 
     // 현재 플레이어 위치
     int playerX = 0; 
@@ -41,12 +41,6 @@ public class sceneManager : MonoBehaviour
         sceneObjectManager = SceneObjectManager.Instance;
         Init(playerX, playerZ);
         StartCoroutine(updateScene());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-                   
     }
 
 #endregion
@@ -131,7 +125,6 @@ public class sceneManager : MonoBehaviour
 
         string sceneName = sceneNameCreate(x , z);
 
-        Debug.Log(sceneName);
         if( sceneInstances.ContainsKey(sceneName) ) {
             return;
         }
