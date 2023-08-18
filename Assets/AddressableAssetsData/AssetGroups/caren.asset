@@ -10,21 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: testingAuto
+  m_Name: caren
   m_EditorClassIdentifier: 
-  m_GroupName: testingAuto
+  m_GroupName: caren
   m_Data:
     m_SerializedData: []
-  m_GUID: e2f69a15c88de34468c5c8536c036830
-  m_SerializeEntries:
-  - m_GUID: e10556d462d8418468ff6fb22f8788bb
-    m_Address: Assets/Testing/0.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - TestLoad
+  m_GUID: f2dc7b3368846244a9337807c7379dc4
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: be77626378f9326409f1ed5febdfc893, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 1d25416b2427c2c4f84e3e5c1218b4f5, type: 2}
-    - {fileID: 11400000, guid: 43bc117ec754a1c4eb6dbca5897dfc46, type: 2}
+    - {fileID: 11400000, guid: bb35692642df80a498e12048335e49ae, type: 2}
+    - {fileID: 11400000, guid: 709a6593b6f7cae4ebe34854206dacc0, type: 2}

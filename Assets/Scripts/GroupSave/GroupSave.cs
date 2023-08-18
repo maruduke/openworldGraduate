@@ -8,6 +8,9 @@ using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.AddressableAssets;
 using UnityEngine.AddressableAssets;
 
+using System.IO;
+
+
 public class GroupSave : MonoBehaviour
 {
     /*
@@ -24,22 +27,27 @@ public class GroupSave : MonoBehaviour
         var obj = this.gameObject.transform;
         var group = settings.FindGroup(obj.name);
 
+        string path = $"Assets/testing/{obj.name}/";
 
         
+        CheckAndCreateFolder(path);
+
+        // addressable group 존재 체크 및 확인
         if (!group)
             group = settings.CreateGroup(obj.name, false, false, true, null, typeof(ContentUpdateGroupSchema), typeof(BundledAssetGroupSchema));
 
-
+        // addressable label 추가
         if (!settings.GetLabels().Contains(obj.name))
             settings.AddLabel(obj.name);
-                
+        
+        // addressable 그룹에 항목 저장 및 labels 지정
         if (settings)
         {
 
             for(int i = 0; i< obj.childCount; i++) 
             {
                 var child = obj.GetChild(i).gameObject;
-                child = PrefabUtility.SaveAsPrefabAsset(child, $"Assets/testing/"+ i +".prefab");
+                child = PrefabUtility.SaveAsPrefabAsset(child, $"{path}{i}.prefab");
 
                 var assetpath = AssetDatabase.GetAssetPath(child.GetInstanceID());
                 var guid = AssetDatabase.AssetPathToGUID(assetpath);
@@ -49,10 +57,6 @@ public class GroupSave : MonoBehaviour
 
                 assetentry.labels.Add(obj.name);
                 settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryModified, assetentry, true);
-
-
-    
-
             }
     
         }
@@ -60,6 +64,20 @@ public class GroupSave : MonoBehaviour
 
 
     }
+
+    void CheckAndCreateFolder(string path)
+    {
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+            Debug.Log("Folder created at path: " + path);
+        }
+
+        else
+        {
+            Debug.Log("Folder already exists at path: " + path);
+        }        
+    }    
 
 
 }
@@ -81,5 +99,7 @@ public class Test : Editor
     }
 
 }
+
+
 
 
