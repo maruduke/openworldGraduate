@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4251005384452746408
+--- !u!1 &8843535684290508605
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4251005384452746410}
-  - component: {fileID: 4251005384452746411}
-  - component: {fileID: 4251005384452746412}
-  - component: {fileID: 4251005384452746414}
-  - component: {fileID: 4251005384452746415}
+  - component: {fileID: 8843535684290508579}
+  - component: {fileID: 8843535684290508604}
+  - component: {fileID: 8182822724520419947}
+  - component: {fileID: 7055839712998064074}
+  - component: {fileID: 2334543760824262400}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -20,31 +20,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4251005384452746410
+--- !u!4 &8843535684290508579
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4251005384452746408}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_GameObject: {fileID: 8843535684290508605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15, y: 2, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4251005384452746411
+--- !u!114 &8843535684290508604
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4251005384452746408}
+  m_GameObject: {fileID: 8843535684290508605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1027a8dd1225d60469ef7ad3e13817e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 256a8784af700c04bb001046459c19c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChunkSize: 30
@@ -70,11 +70,11 @@ MonoBehaviour:
     - Type: Unity.HLODSystem.SerializableDynamicObject+SerializeItem`1[[System.Boolean,
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]],
         HLOD, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      Data: '{"Name":"UseSubHLODTree","Data":true}'
+      Data: '{"Name":"UseSubHLODTree","Data":false}'
     - Type: Unity.HLODSystem.SerializableDynamicObject+SerializeItem`1[[System.Single,
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]],
         HLOD, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      Data: '{"Name":"SubHLODTreeSize","Data":50.0}'
+      Data: '{"Name":"SubHLODTreeSize","Data":100.0}'
   m_SimplifierOptions:
     m_SerializeItems:
     - Type: Unity.HLODSystem.SerializableDynamicObject+SerializeItem`1[[System.Single,
@@ -123,32 +123,19 @@ MonoBehaviour:
       Data: '{"Name":"AddressablesGroupName","Data":"HLOD"}'
   m_generatedObjects:
   - {fileID: -8117966405139107755, guid: 2c3f450b914eb6f4db4bfe4b0634f262, type: 3}
-  - {fileID: 4251005384452746414}
-  - {fileID: 4251005384452746415}
+  - {fileID: 8182822724520419947}
+  - {fileID: 7055839712998064074}
   m_convertedPrefabObjects: []
---- !u!135 &4251005384452746412
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4251005384452746408}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 10
-  m_Center: {x: 50, y: 0, z: 50}
---- !u!114 &4251005384452746414
+--- !u!114 &8182822724520419947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4251005384452746408}
+  m_GameObject: {fileID: 8843535684290508605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a49f5c15e5928543926349fecc9dccb, type: 3}
+  m_Script: {fileID: 11500000, guid: a797105cebc05d145bebd78a633b141c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_treeNodeContainer:
@@ -156,15 +143,15 @@ MonoBehaviour:
   m_root:
     m_level: 0
     m_bounds:
-      m_Center: {x: 53.3167, y: 2.6472833, z: 54.651054}
-      m_Extent: {x: 5.9734497, y: 5.9734497, z: 5.9734497}
+      m_Center: {x: 0.041702747, y: 2.6472838, z: 0.09605551}
+      m_Extent: {x: 2.65722, y: 2.65722, z: 2.65722}
     m_childTreeNodeIds: 
-    m_highObjectIds: 0000000001000000020000000300000004000000
+    m_highObjectIds: 000000000100000002000000030000000400000005000000
     m_lowObjectIds: 00000000
   m_cullDistance: 0.01
   m_lodDistance: 0.3
   m_controllerID: 0
-  m_userDataSerializer: {fileID: 4251005384452746415}
+  m_userDataSerializer: {fileID: 7055839712998064074}
   m_controlMode: 2
   m_manualLevel:
     m_minValue: -1
@@ -173,47 +160,66 @@ MonoBehaviour:
   m_highObjects:
   - GameObject: {fileID: 0}
     Address: Assets/External Asset Package/Darth_Artisan/Free_Trees/Prefabs/Oak_Tree.prefab
-    Parent: {fileID: 4251005384452746410}
-    Position: {x: 50, y: -0, z: 53.74}
-    Rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+    Parent: {fileID: 8843535684290508579}
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
     Scale: {x: 1, y: 1, z: 1}
   - GameObject: {fileID: 0}
     Address: Assets/External Asset Package/Darth_Artisan/Free_Trees/Prefabs/Oak_Tree.prefab
-    Parent: {fileID: 4251005384452746410}
-    Position: {x: 56.55, y: 0, z: 50}
-    Rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+    Parent: {fileID: 8843535684290508579}
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
     Scale: {x: 1, y: 1, z: 1}
   - GameObject: {fileID: 0}
     Address: Assets/External Asset Package/Darth_Artisan/Free_Trees/Prefabs/Oak_Tree.prefab
-    Parent: {fileID: 4251005384452746410}
-    Position: {x: 50, y: -0, z: 59.11}
-    Rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+    Parent: {fileID: 8843535684290508579}
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
     Scale: {x: 1, y: 1, z: 1}
   - GameObject: {fileID: 0}
     Address: Assets/External Asset Package/Darth_Artisan/Free_Trees/Prefabs/Oak_Tree.prefab
-    Parent: {fileID: 4251005384452746410}
-    Position: {x: 55.55, y: -0, z: 56.7}
-    Rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+    Parent: {fileID: 8843535684290508579}
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
     Scale: {x: 1, y: 1, z: 1}
   - GameObject: {fileID: 0}
     Address: Assets/External Asset Package/Darth_Artisan/Free_Trees/Prefabs/Oak_Tree.prefab
-    Parent: {fileID: 4251005384452746410}
-    Position: {x: 50, y: 0, z: 50}
-    Rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+    Parent: {fileID: 8843535684290508579}
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+  - GameObject: {fileID: 0}
+    Address: Assets/External Asset Package/Darth_Artisan/Free_Trees/Prefabs/Oak_Tree.prefab
+    Parent: {fileID: 8843535684290508579}
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
     Scale: {x: 1, y: 1, z: 1}
   m_lowObjects:
   - Assets/TestingAsset/GameObject_group-1.hlod[]
---- !u!114 &4251005384452746415
+--- !u!114 &7055839712998064074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4251005384452746408}
+  m_GameObject: {fileID: 8843535684290508605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19633bd401ae4747824c3bc054f82397, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a32614eb4ad30e48b9940306805390a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_idList: 
   m_userDataList: []
+--- !u!135 &2334543760824262400
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843535684290508605}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}

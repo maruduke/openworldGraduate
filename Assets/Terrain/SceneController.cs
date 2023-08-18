@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
+
+
+
+
+
+
+
 
 using System;
 using MySystem.SceneControl;
@@ -48,6 +56,7 @@ namespace MySystem.SceneControl{
 
         private Vector3 pos;
 
+
         /*
         prepare: 초기 단계
         Loading: 데이터 로드, 언로드 진행중
@@ -65,8 +74,8 @@ namespace MySystem.SceneControl{
 
 #endregion
 
-        void Start()
-                {   
+        void Start() {   
+
             // 값 초기화
             state = State.prepare;
             sceneName = this.gameObject.scene.name;
@@ -127,12 +136,15 @@ namespace MySystem.SceneControl{
 
 #region Test
 
+
+
         IEnumerator GetLocation() {
 
             if(state != State.prepare)
                 yield break;
                         
             state = State.Loading;
+
 
             if(_locations == null) {            
                 Addressables.LoadResourceLocationsAsync(assetLabel.labelString).Completed +=
@@ -144,13 +156,13 @@ namespace MySystem.SceneControl{
                         else
                             Debug.Log("LoadResourceLocationAsync error");
 
-                            
                     };
             }
 
+
             yield return new WaitWhile( () => _locations == null);
 
-
+            Debug.Log(_locations.Count);
             state = State.Unload;
 
             yield break;

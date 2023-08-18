@@ -10,24 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: HLOD
+  m_Name: testingAuto
   m_EditorClassIdentifier: 
-  m_GroupName: HLOD
+  m_GroupName: testingAuto
   m_Data:
     m_SerializedData: []
-  m_GUID: 87968d33ee077d24fac145ee6c3197b2
+  m_GUID: e2f69a15c88de34468c5c8536c036830
   m_SerializeEntries:
-  - m_GUID: c44bd9bdc114d4a60932c0087d9d1732
-    m_Address: Assets/External Asset Package/Darth_Artisan/Free_Trees/Prefabs/Oak_Tree.prefab
+  - m_GUID: e10556d462d8418468ff6fb22f8788bb
+    m_Address: Assets/Testing/0.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2c3f450b914eb6f4db4bfe4b0634f262
-    m_Address: Assets/TestingAsset/GameObject_group-1.hlod
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - TestLoad
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: be77626378f9326409f1ed5febdfc893, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: b042364a7de1f45469e1d02d73ffc089, type: 2}
-    - {fileID: 11400000, guid: b1986d19649954549abf90fcc8ce488c, type: 2}
+    - {fileID: 11400000, guid: 1d25416b2427c2c4f84e3e5c1218b4f5, type: 2}
+    - {fileID: 11400000, guid: 43bc117ec754a1c4eb6dbca5897dfc46, type: 2}
