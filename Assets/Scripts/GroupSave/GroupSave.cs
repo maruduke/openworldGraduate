@@ -14,12 +14,16 @@ using System.IO;
 public class GroupSave : MonoBehaviour
 {
     /*
-        본인 오브젝트의 자식 오브젝트를 특정 폴더 내부에 저장
+        본인 오브젝트의 자식 오브젝트를 특정 폴더 내부에 저장하고
+        어드레서블의 그룹에 저장과 label을 지정하는 클래스
 
+        ***     사용법      ***
+        오브젝트에 해당 스크립트를 삽입하고
+        save버튼을 선택시 자동 실행
     */
 
-    //label 설정으로 해결
 
+#if UNITY_EDITOR
     public void save()
     {
         var settings = AddressableAssetSettingsDefaultObject.Settings;
@@ -54,16 +58,14 @@ public class GroupSave : MonoBehaviour
    
 
                 var assetentry = settings.CreateOrMoveEntry(guid, group);
-
                 assetentry.labels.Add(obj.name);
                 settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryModified, assetentry, true);
             }
     
         }
 
-
-
     }
+#endif
 
     void CheckAndCreateFolder(string path)
     {
