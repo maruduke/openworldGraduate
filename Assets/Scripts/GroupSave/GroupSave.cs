@@ -24,14 +24,14 @@ public class GroupSave : MonoBehaviour
 
 
 #if UNITY_EDITOR
-    public void save()
+    public void save(string objectType)
     {
         var settings = AddressableAssetSettingsDefaultObject.Settings;
         
         var obj = this.gameObject.transform;
         var group = settings.FindGroup(obj.name);
 
-        string path = $"Assets/testing/{obj.name}/";
+        string path = $"Assets/testing/{obj.name}/{objectType}/";
 
         
         CheckAndCreateFolder(path);
@@ -51,7 +51,7 @@ public class GroupSave : MonoBehaviour
             for(int i = 0; i< obj.childCount; i++) 
             {
                 var child = obj.GetChild(i).gameObject;
-                child = PrefabUtility.SaveAsPrefabAsset(child, $"{path}{i}.prefab");
+                child = PrefabUtility.SaveAsPrefabAsset(child, $"{path}{objectType}{i}.prefab");
 
                 var assetpath = AssetDatabase.GetAssetPath(child.GetInstanceID());
                 var guid = AssetDatabase.AssetPathToGUID(assetpath);
@@ -93,10 +93,13 @@ public class Test : Editor
         DrawDefaultInspector();
 
         GroupSave myTarget = (GroupSave) target;
-        if(GUILayout.Button("test")) {
-            myTarget.save();
+        if(GUILayout.Button("Terrain Save")) {
+            myTarget.save("Terrain");
         }
 
+        if(GUILayout.Button("HLOD Save")) {
+            myTarget.save("HLOD");
+        }
        
     }
 
