@@ -46,55 +46,13 @@ public class HLODCamera : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        detectDeactivateHLOD();
-    }
+
 
 #endregion
 
 
 
 
-    void detectDeactivateHLOD() {
-        
-        
-        // Collider[] colls = Physics.OverlapSphere(tr.position, radius, 1 << deactivateHLODlayerMask );
-
-        Collider[] testResult = new Collider[3];
-        Collider[] results = new Collider[3];
-
-
-        Physics.OverlapSphereNonAlloc(tr.position, radius, results, 1 << deactivateHLODlayerMask);
-
-
-        // foreach(Collider result in results)
-        // {
-        //     if(result != null)
-        //     {
-        //         GameObject obj = result.transform.root.gameObject;
-        //         HLODControllerBase controller = obj.GetComponent<HLODControllerBase>();
-        //         hlodManager.Register(controller);
-        //     }
-        // }
-        
-        
-        // foreach(Collider coll in colls) 
-        // {
-        //     GameObject obj = coll.transform.root.gameObject;
-            
-        //     obj.GetComponent<AddressableHLODController>().selfChangeLayers(HLODlayerMask);
-
-            // if(currentHLODObjs.Contains(obj)) {
-            //     continue;
-            // }
-            // else {
-            //     currentHLODObjs.Add(obj);
-            //     obj.GetComponent<AddressableHLODController>().LoadLowObjectAll(null);
-            //     Debug.Log(obj.name +" is Loaded");
-            // }
-
-    }
         
     
 

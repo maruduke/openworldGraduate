@@ -125,11 +125,12 @@ public class sceneManager : MonoBehaviour
 
         string sceneName = sceneNameCreate(x , z);
 
+
         if( sceneInstances.ContainsKey(sceneName) ) {
             return;
         }
         
- 
+#if !DISABLE_ERROR
         Addressables.LoadSceneAsync(sceneName, LoadSceneMode.Additive).Completed += 
         (handle) => {
         
@@ -143,6 +144,7 @@ public class sceneManager : MonoBehaviour
             }
         
         };
+#endif
 
     
     

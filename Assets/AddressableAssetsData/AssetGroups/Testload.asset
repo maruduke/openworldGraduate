@@ -10,21 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: LoadTest
+  m_Name: Testload
   m_EditorClassIdentifier: 
-  m_GroupName: LoadTest
+  m_GroupName: Testload
   m_Data:
     m_SerializedData: []
-  m_GUID: 34150022702fba14fad8030021922574
-  m_SerializeEntries:
-  - m_GUID: 25a8bcbcbc5735c47bcaa41db9b28375
-    m_Address: Assets/Terrain/Terrain.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - TestLoad
+  m_GUID: f972978a814720f43b3241cabe85db47
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: be77626378f9326409f1ed5febdfc893, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 5ddab9ec0798f5c4aa07e57dc907f570, type: 2}
-    - {fileID: 11400000, guid: 9ca4282199d3192419109d79c52f474c, type: 2}
+    - {fileID: 11400000, guid: ae1c9ad4aee3ecb418daccf1d0967909, type: 2}
+    - {fileID: 11400000, guid: 5cc40637b393c1e4fb722d9baa80159a, type: 2}

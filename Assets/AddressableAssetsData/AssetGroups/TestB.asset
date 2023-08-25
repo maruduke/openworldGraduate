@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: TestB
   m_Data:
     m_SerializedData: []
-  m_GUID: d0fc4d04d67fe23469aa375dd9855606
+  m_GUID: 66026c3c606c6614f98eb05b77180491
   m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: be77626378f9326409f1ed5febdfc893, type: 2}

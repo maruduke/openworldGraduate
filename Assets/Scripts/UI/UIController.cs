@@ -11,13 +11,17 @@ public class UIController : MonoBehaviour
 
     private float rotX;
     private float rotY;
-    public float sensitivity = 0.000000000000000000000001f;
-    public float clampAngle = 70f;
+    public float sensitivity;
+    public float clampAngle;
+
+    public Transform tr;
 
 #endregion
 
     void Start()
     {
+        sensitivity = 10f;
+        clampAngle = 70f;
         rotX = transform.localRotation.eulerAngles.x;
         rotY = transform.localRotation.eulerAngles.y;
     }
@@ -41,7 +45,7 @@ public class UIController : MonoBehaviour
             for(int i=0; i<Input.touchCount;i++) {
                 
                 //UI 터치 확인
-                if(EventSystem.current.IsPointerOverGameObject(i) == false) {                 
+                if(EventSystem.current.IsPointerOverGameObject(i) == false) {               
                     touchCnt += 1;
                     getTouch = i;
                 }
@@ -49,16 +53,17 @@ public class UIController : MonoBehaviour
 
             // 화면 전환 
             if(touchCnt == 1) {
-             
+
+                
                 touch = Input.GetTouch(getTouch);
                 
-
 
                 if(touch.phase == TouchPhase.Moved)
                 {
                     Vector2 touchDeltaPosition = touch.deltaPosition;
 
-   
+                    Debug.Log(touchDeltaPosition.x * sensitivity * Time.deltaTime);
+                    Debug.Log(touchDeltaPosition.y * sensitivity * Time.deltaTime);
                     rotX -= touchDeltaPosition.y * sensitivity * Time.deltaTime;
                     rotY += touchDeltaPosition.x * sensitivity * Time.deltaTime;
 
@@ -66,7 +71,9 @@ public class UIController : MonoBehaviour
 
                     Quaternion rot = Quaternion.Euler(rotX, rotY, 0);
 
-                    transform.rotation = rot;
+      
+                    tr.rotation = rot;
+
                 }
 
             }

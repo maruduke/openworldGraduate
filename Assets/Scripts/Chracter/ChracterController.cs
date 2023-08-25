@@ -5,17 +5,22 @@ using UnityEngine;
 public class ChracterController : MonoBehaviour
 {
     public FixedJoystick joy;
-    public Rigidbody rigidBody;
+    public RunController runController;
+
+    public GameObject Cam;
+    public Animator anim;
+    public GameObject direction;
+    private Rigidbody rigidBody;
+
     public float speed = 2f;
     public float jumpHeight = 3f;
     public float dash = 5f;
     public float rotSpeed = 10f;
+
     private Vector3 dir = Vector3.zero;
-    public GameObject Cam;
-    public Animator anim;
+
     
 
-    public GameObject direction;
 
     void Start()
     {
@@ -57,11 +62,12 @@ public class ChracterController : MonoBehaviour
         }
 
     }
-
-    private void FixedUpdate() 
-    {
-
-        
-    }
     
+
+
+    public void speedExchange(bool runStatus)
+    {
+        if(runStatus) speed = 50f;
+        else speed = 10f;
+    }
 }

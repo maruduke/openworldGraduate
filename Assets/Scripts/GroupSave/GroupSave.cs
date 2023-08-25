@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.AddressableAssets;
+#endif
+
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 using System.IO;
@@ -65,7 +68,7 @@ public class GroupSave : MonoBehaviour
         }
 
     }
-#endif
+
 
     void CheckAndCreateFolder(string path)
     {
@@ -103,7 +106,10 @@ public class Test : Editor
        
     }
 
+#endif
+
 }
+
 
 
 

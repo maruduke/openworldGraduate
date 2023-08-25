@@ -43,10 +43,9 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 8f51b04daac558a4abcb6aa64d5906bd, type: 2}
   - {fileID: 11400000, guid: db79746f16e50f242b6fe12a5c0fa392, type: 2}
-  - {fileID: 11400000, guid: ee460b23264b61a4d8cca7c969ec62ed, type: 2}
-  - {fileID: 11400000, guid: 392cd5f1361e5ac47bd21f4675f7af4e, type: 2}
   - {fileID: 11400000, guid: 4681bb3976af6444284103e042910648, type: 2}
-  - {fileID: 11400000, guid: f7ce905de17a61b4ebd297ab3965f026, type: 2}
+  - {fileID: 11400000, guid: 392cd5f1361e5ac47bd21f4675f7af4e, type: 2}
+  - {fileID: 11400000, guid: 8f5d568ad7eca664dbcd50df7fdd5d5e, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -102,11 +101,10 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - scene
     - object
     - TestLoad
-    - testingAuto
-    - autoApocal
-    - caren
+    - Testload
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 8d42b892ad1692f46bd560a52c53f6a1, type: 2}
