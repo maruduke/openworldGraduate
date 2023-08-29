@@ -12,15 +12,17 @@ public class ChracterController : MonoBehaviour
     public GameObject direction;
     private Rigidbody rigidBody;
 
-    public float speed = 2f;
+    public float speed = 10f;
+    private bool runStatus = false;
+
     public float jumpHeight = 3f;
     public float dash = 5f;
     public float rotSpeed = 10f;
 
     private Vector3 dir = Vector3.zero;
 
-    
-
+    private RaycastHit hit;
+    private float raycastDistance = 5f;
 
     void Start()
     {
@@ -41,7 +43,9 @@ public class ChracterController : MonoBehaviour
         dir.x = joy.Horizontal;
         dir.z = joy.Vertical;
 
+        
 
+        preventWall();
         if(dir != Vector3.zero) {
 
             anim.SetBool("Run", true);
@@ -54,7 +58,9 @@ public class ChracterController : MonoBehaviour
             }
 
             Vector3 movement = cameraRelativeInput * speed * Time.deltaTime;
-            transform.Translate(movement, Space.World);
+
+            // transform.Translate(movement, Space.World);
+            rigidBody.MovePosition(transform.position + movement);
         }
 
         else {
@@ -65,9 +71,29 @@ public class ChracterController : MonoBehaviour
     
 
 
-    public void speedExchange(bool runStatus)
+    public void speedExchange(bool isExchangeStatus)
     {
+        if(isExchangeStatus)
+            runStatus = !runStatus;
+
         if(runStatus) speed = 50f;
-        else speed = 10f;
+        else speed = 20f;
+    }
+
+    public void preventWall() {
+        
+        Debug.DrawRay(transform.position + (Vector3.up * 0.3f), transform.forward * raycastDistance, Color.red);
+        if(Physics.Raycast(transform.position + (Vector3.up * 0.3f), transform.forward, out hit, raycastDistance, ~(1 << 2))) {
+
+            if(hit.distance < 0.5) {
+                Debug.Log("speed 0");
+                speed = 3f;
+            }
+        }
+        else {
+            Debug.Log("speed normal");
+            speedExchange(false);
+        }
+
     }
 }
