@@ -21,14 +21,18 @@ public class sceneManager : MonoBehaviour
 
     Vector3 pos;    
     // 터레인 크기
-    int terrainRange = 1000;
+    int terrainRange = 100;
 
     // 현재 플레이어 위치
     int playerX = 0; 
     int playerZ = 0;
     
     // 메모리에 올라간 씬 리스트
-    private Dictionary<string, SceneInstance> sceneInstances = new Dictionary<string, SceneInstance>();
+    // private Dictionary<string, SceneInstance> sceneInstances = new Dictionary<string, SceneInstance>();
+    private Dictionary<string, Scene> sceneInstances = new Dictionary<string, Scene>();
+    
+    [SerializeField] 
+    private GameObject LoadObjects; 
 
 
 #endregion
@@ -57,7 +61,7 @@ public class sceneManager : MonoBehaviour
         {
             for(int j= -terrainRange; j <= terrainRange; j += terrainRange )
             {
-                AddressableSceneLoad(x + i , z + j);
+                sceneLoad(x + i , z + j);
             }
         }
     }
@@ -86,25 +90,27 @@ public class sceneManager : MonoBehaviour
 
                 int[] vec = new int[3]{-1,0,1};
 
+                Debug.Log("______________________________________________________________");
                 // x방향으로 +,- 방향으로 이동
                 if(xcheck != 0) {
 
                     xcheck = xcheck > 0 ? 1 : -1;
+                    Debug.Log($"playerX: {playerX}");
                     for(int i = 0 ; i<3; i++) {
-                        AddressableSceneLoad(playerX + (terrainRange*xcheck), playerZ + terrainRange*vec[i]);
-                        AddressableSceneUnload(playerX - (terrainRange*xcheck), playerZ + terrainRange*vec[i]);
+                        sceneLoad(x + (terrainRange*xcheck), playerZ + terrainRange*vec[i]);
+                        sceneUnload(playerX - (terrainRange*xcheck), playerZ + terrainRange*vec[i]);
                     }
                 }
 
                 // z방향으로 +,- 방향으로 이동
-                else if(zcheck != 0) {
+                if(zcheck != 0) {
                     zcheck = zcheck > 0 ? 1 : -1;
                     for(int i = 0 ; i<3; i++) {
-                        AddressableSceneLoad(playerX + terrainRange*vec[i], playerZ + (terrainRange * zcheck));
-                        AddressableSceneUnload(playerX + terrainRange*vec[i], playerZ - (terrainRange * zcheck));
+                        sceneLoad(playerX + terrainRange*vec[i], z + (terrainRange * zcheck));
+                        sceneUnload(playerX + terrainRange*vec[i], playerZ - (terrainRange * zcheck));
                     }
                 }
-
+                Debug.Log("______________________________________________________________");
 
                 playerX = x;
                 playerZ = z;
@@ -120,48 +126,47 @@ public class sceneManager : MonoBehaviour
 
 #region assist method
     // addressable asset system scene loading
-    private void AddressableSceneLoad(int x, int z)
+    private void sceneLoad(int x, int z)
     {
 
         string sceneName = sceneNameCreate(x , z);
 
-
-        if( sceneInstances.ContainsKey(sceneName) ) {
+        if( sceneInstances.ContainsKey(sceneName) )
             return;
-        }
-        
-#if !DISABLE_ERROR
-        Addressables.LoadSceneAsync(sceneName, LoadSceneMode.Additive).Completed += 
-        (handle) => {
-        
-            if (handle.Status == AsyncOperationStatus.Succeeded) {
-                sceneInstances.Add(sceneName, handle.Result);
-            }
-
-            else {
-                //AddressablesImpl LogException() 수정
-                Debug.LogWarning(sceneName + " is not founded");
-            }
-        
-        };
-#endif
-
     
-    
+        
+        Debug.Log("scene Loading: " + sceneName);
+        Scene newScene = SceneManager.CreateScene(sceneName);
+                
+        sceneInstances.Add(sceneName, newScene);
+
+                // 프리팹 인스턴스 생성
+        GameObject instantiatedPrefab = Instantiate(LoadObjects);
+        instantiatedPrefab.transform.position = new Vector3(x,0,z);
+
+        // 생성된 프리팹 인스턴스를 새로운 장면에 추가
+        SceneManager.MoveGameObjectToScene(instantiatedPrefab, newScene);
+
+
     } 
 
 
-    private void AddressableSceneUnload(int x, int z)
+    private void sceneUnload(int x, int z)
     {
         string sceneName = sceneNameCreate(x , z);
-        SceneInstance sceneInstance;
-    
-        if(sceneInstances.TryGetValue(sceneName, out sceneInstance)) {
-            
-            Addressables.UnloadSceneAsync(sceneInstance).Completed += (handle) => {
-                Resources.UnloadUnusedAssets();
-                sceneInstances.Remove(sceneName);
 
+        Scene sceneInstance;
+
+        if(sceneInstances.TryGetValue(sceneName, out sceneInstance)) {
+            var loader = SceneManager.UnloadSceneAsync(sceneInstance);
+
+            loader.completed += (handle) => {
+
+                if(handle.isDone) {
+                    Debug.Log("scene unload: " + sceneName);
+                    sceneInstances.Remove(sceneName);
+                    System.GC.Collect();
+                }
             };
 
         }
@@ -171,7 +176,7 @@ public class sceneManager : MonoBehaviour
 
     private string sceneNameCreate(int x, int z)
     {
-        return string.Format($"Assets/Scenes/map{x}_{z}.unity");
+        return string.Format($"Map{x}_{z}");
     }
 
 #endregion

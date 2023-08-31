@@ -12,10 +12,10 @@ public class ChracterController : MonoBehaviour
     public GameObject direction;
     private Rigidbody rigidBody;
 
-    public float speed = 10f;
+    public float speed;
     private bool runStatus = false;
 
-    public float jumpHeight = 3f;
+    private float jumpHeight = 18f;
     public float dash = 5f;
     public float rotSpeed = 10f;
 
@@ -34,7 +34,53 @@ public class ChracterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        preventThroughTheWall();
+    }
 
+    private void FixedUpdate() {
+        
+        move();      
+    }
+    
+
+
+    public void speedExchange(bool isExchangeStatus)
+    {
+        if(isExchangeStatus)
+            runStatus = !runStatus;
+
+        if(runStatus) speed = 30f;
+        else speed = 10f;
+    }
+
+    public void preventThroughTheWall() {
+        
+        // Debug.DrawRay(transform.position + (Vector3.up * 0.3f), transform.forward * raycastDistance, Color.red);
+        if(Physics.Raycast(transform.position + (Vector3.up * 0.3f), transform.forward, out hit, raycastDistance, ~(1 << 2))) {
+
+            if(hit.distance < 1) {
+                speed = speed * Mathf.Floor(hit.distance * 10f) / 10f;
+            }
+        }
+        else {
+            speedExchange(false);
+        }
+
+    }
+
+/*
+    player jump 제어
+*/
+    public void jump() {
+
+        rigidBody.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+    }
+
+/*
+    player 움직임 제어
+*/
+
+    public void move() {
         Vector3 offset = Cam.transform.forward;
         offset.y = 0;
         offset.Normalize();
@@ -45,7 +91,6 @@ public class ChracterController : MonoBehaviour
 
         
 
-        preventWall();
         if(dir != Vector3.zero) {
 
             anim.SetBool("Run", true);
@@ -58,42 +103,13 @@ public class ChracterController : MonoBehaviour
             }
 
             Vector3 movement = cameraRelativeInput * speed * Time.deltaTime;
-
-            // transform.Translate(movement, Space.World);
             rigidBody.MovePosition(transform.position + movement);
+
         }
 
         else {
             anim.SetBool("Run", false);
-        }
-
-    }
-    
-
-
-    public void speedExchange(bool isExchangeStatus)
-    {
-        if(isExchangeStatus)
-            runStatus = !runStatus;
-
-        if(runStatus) speed = 50f;
-        else speed = 20f;
-    }
-
-    public void preventWall() {
-        
-        Debug.DrawRay(transform.position + (Vector3.up * 0.3f), transform.forward * raycastDistance, Color.red);
-        if(Physics.Raycast(transform.position + (Vector3.up * 0.3f), transform.forward, out hit, raycastDistance, ~(1 << 2))) {
-
-            if(hit.distance < 0.5) {
-                Debug.Log("speed 0");
-                speed = 3f;
-            }
-        }
-        else {
-            Debug.Log("speed normal");
-            speedExchange(false);
-        }
+        } 
 
     }
 }

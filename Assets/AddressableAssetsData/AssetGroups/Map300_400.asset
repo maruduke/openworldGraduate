@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Map300_400
+  m_EditorClassIdentifier: 
+  m_GroupName: Map300_400
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 44a2a4c072b5a55488cde8e0f646f58a
+  m_SerializeEntries:
+  - m_GUID: 4b8ffb83803a78641a1309ba3e11fbc3
+    m_Address: Assets/Resources/Maps/Map300_400/Terrain(6.00, 6.00).prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map300_400
+  - m_GUID: 9ac0bab2affbe5644b199c71133accd7
+    m_Address: Assets/Resources/Maps/Map300_400/Terrain(6.00, 7.00).prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map300_400
+  - m_GUID: 16930b1081a101946a9d828e6896dedd
+    m_Address: Assets/Resources/Maps/Map300_400/Terrain(7.00, 6.00).prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map300_400
+  - m_GUID: ea65b9a0a45ab8f4dbff78f029f1579d
+    m_Address: Assets/Resources/Maps/Map300_400/Terrain(7.00, 7.00).prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Map300_400
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: be77626378f9326409f1ed5febdfc893, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 22f5528559cfbaf42a29313e35ce1b37, type: 2}
+    - {fileID: 11400000, guid: 394a36414491f6b4693e893eeb349cd2, type: 2}

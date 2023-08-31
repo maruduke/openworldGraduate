@@ -37,8 +37,6 @@ namespace MySystem.SceneControl{
         // 어드레서블의 Label을 얻어올 수 있는 필드.
 
 #region variables
-
-        public AssetLabelReference assetLabel;
     
         private IList<IResourceLocation> _locations;
         // 생성된 게임오브젝트를 Destroy하기 위해 참조값을 캐싱한다.
@@ -103,6 +101,10 @@ namespace MySystem.SceneControl{
             int xcheck = x - (int) pos.x;
             int zcheck = z - (int) pos.z;
             int vec = (xcheck*xcheck)  + (zcheck*zcheck);
+            
+            // Debug.Log("vec:" + vec + "range: " + terrainRange);
+
+
 
             // Debug.Log("vec:" + vec + "range: " + terrainRange);
             if(vec < terrainRange && state == State.Unloadhlod) {
@@ -147,7 +149,7 @@ namespace MySystem.SceneControl{
 
 
             if(_locations == null) {            
-                Addressables.LoadResourceLocationsAsync(assetLabel.labelString).Completed +=
+                Addressables.LoadResourceLocationsAsync(sceneName).Completed +=
                     (handle) =>
                     {
                         if(handle.Status == AsyncOperationStatus.Succeeded) {
