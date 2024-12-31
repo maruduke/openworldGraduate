@@ -42,8 +42,33 @@
 
 
 ### 4.2 메모리 관리
+
+오픈월드의 방대한 맵과 많은 오브젝트는 거대한 용량을 가진다. 해당 데이터 전체를 메모리에 올리는 것은 모바일 메모리 성능으로는 제약이 따른다. 따라서 필요한 데이터를 선별적으로 메모리에 적재한다.  
+  
+![image](https://github.com/user-attachments/assets/629b57eb-14f9-4e6b-958b-b0e93b3b0bf7)
+
+오브젝트 관리 시스템에서는 맵과 오브젝트를 특정 영역을 기준으로 분할하여 관리한다. 해당 **분할된 영역 단위를 씬(Scene)** 이라고 부른다. 플레이어 위치를 기반으로 하여 일정 거리 내부에 존재하는 씬을 관리 시스템이 관리를 시작한다. 씬이 관리 시스템을 통해 생성될 때 맵 데이터와 오브젝트 데이터의 디스크 저장 위치를 가지고 있다. 씬 영역은 플레이어가 이동하면서 일정거리 이상 가까워지면 가지고 있는 디스크 저장 위치의 맵과 오브젝트를 가져와 렌더링하여 플레이어에게 인식된다. 플레이어 위치가 씬에서 일정거리 이상 멀어진다면 씬 내부의 데이터를 전부 삭제함으로써 메모리 총량을 일정하게 유지한다.  
+
 ### 4.3 CPU 성능 최적화
+
+
+![image](https://github.com/user-attachments/assets/6433301c-9682-4bfd-b0af-933e7d9ac049)
+
+
 ### 4.4 HLOD 적용 및 커스터마이징
 
 ## 5. 결과
+
+### 5.1 맵 생성
+![image](https://github.com/user-attachments/assets/89f5747e-acef-495c-a9ce-b8c1aac50f8d)
+![image](https://github.com/user-attachments/assets/a6979fb7-3e00-4358-b821-d8c38319435a)
+
+### 5.2 메모리 관리
+
+![image](https://github.com/user-attachments/assets/a845a392-bffe-4910-a646-ea60eb9b8e7c)
+메모리 실시간 점유율
+
+
+### 5.3 CPU 점유율
+![image](https://github.com/user-attachments/assets/18972ef1-8e30-41c1-942e-5b3b4c9eca2d)
 
